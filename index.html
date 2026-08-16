@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黑神话悟空攻略站 - 天命人指南</title>
+    <style>
+        :root {
+            --bg: #1a1a1a;
+            --card-bg: #2d2d2d;
+            --gold: #c9a86c;
+            --red: #8b1a1a;
+            --text: #e0d5c0;
+            --text-secondary: #a89880;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+        }
+
+        /* 顶部导航 */
+        .header {
+            background: linear-gradient(180deg, #000 0%, #1a1a1a 100%);
+            border-bottom: 2px solid var(--gold);
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(201, 168, 108, 0.5);
+        }
+
+        .header .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* 导航栏 */
+        .nav {
+            background: #222;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+            flex-wrap: wrap;
+            padding: 0 15px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* 主体容器 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* 搜索框 */
+        .search-box {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .search-box input {
+            width: 60%;
+            max-width: 500px;
+            padding: 14px 20px;
+            background: #2d2d2d;
+            border: 1px solid #444;
+            border-radius: 30px;
+            color: var(--text);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--gold);
+        }
+
+        .search-box input::placeholder {
+            color: #666;
+        }
+
+        /* 板块标题 */
+        .section-title {
+            font-size: 1.4rem;
+            color: var(--gold);
+            border-left: 4px solid var(--gold);
+            padding-left: 12px;
+            margin: 40px 0 20px;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* 卡片样式 */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #3a3a3a;
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .card h3 {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .card .difficulty {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+        }
+
+        .difficulty.easy {
+            background: #1a4d1a;
+            color: #7dff7d;
+        }
+
+        .difficulty.medium {
+            background: #4d3d1a;
+            color: #ffd77d;
+        }
+
+        .difficulty.hard {
+            background: #4d1a1a;
+            color: #ff7d7d;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #3a3a3a;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: #aaa;
+            margin-right: 5px;
+            margin-top: 10px;
+        }
+
+        /* 热点信息条 */
+        .hot-banner {
+            background: linear-gradient(135deg, #3a1a1a, #2d1a1a);
+            border: 1px solid var(--red);
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hot-banner .icon {
+            font-size: 1.8rem;
+        }
+
+        .hot-banner .text {
+            font-size: 0.95rem;
+        }
+
+        .hot-banner .text strong {
+            color: #ff6b6b;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid #333;
+            margin-top: 50px;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.4rem;
+            }
+            .nav-links {
+                gap: 15px;
+                font-size: 0.85rem;
+            }
+            .search-box input {
+                width: 90%;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 头部 -->
+    <header class="header">
+        <h1>🐒 天命人攻略站</h1>
+        <p class="subtitle">黑神话：悟空 · 全流程攻略 | BOSS打法 | 隐藏收集</p>
+    </header>
+
+    <!-- 导航 -->
+    <nav class="nav">
+        <ul class="nav-links">
+            <li><a href="#boss">BOSS攻略</a></li>
+            <li><a href="#hidden">隐藏内容</a></li>
+            <li><a href="#collect">全收集</a></li>
+            <li><a href="#ending">多结局</a></li>
+            <li><a href="#guide">新手入门</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主体 -->
+    <main class="container">
+
+        <!-- 搜索 -->
+        <div class="search-box">
+            <input type="text" placeholder="🔍 搜索BOSS名、物品名、关卡名..." id="searchInput">
+        </div>
+
+        <!-- 热点提示 -->
+        <div class="hot-banner">
+            <span class="icon">🔥</span>
+            <div class="text">
+                <strong>最多人卡关：</strong> 幽魂 · 白衣秀士 · 虎先锋 · 黄风大圣 · 百目魔君
+                —— 点击下方卡片查看详细打法
+            </div>
+        </div>
+
+        <!-- BOSS攻略 -->
+        <h2 class="section-title" id="boss">⚔️ 热门BOSS攻略</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>幽魂（大头娃娃）</h3>
+                <span class="difficulty medium">难度：★★☆</span>
+                <p>第一章·黑风山。新手第一道坎，掌握闪避时机是关键。推荐用定身术+棍势重击。</p>
+                <span class="tag">第一章</span>
+                <span class="tag">新手必看</span>
+            </div>
+
+            <div class="card">
+                <h3>白衣秀士</h3>
+                <span class="difficulty hard">难度：★★★</span>
+                <p>第一章·竹林。攻击频率高，连招多变。建议拉开距离，等他出招后摇时输出。</p>
+                <span class="tag">第一章</span>
+                <span class="tag">高频卡关</span>
+            </div>
+
+            <div class="card">
+                <h3>虎先锋</h3>
+                <span class="difficulty hard">难度：★★★☆</span>
+                <p>第二章·黄风岭。攻击欲望极强，血厚。利用场景柱子卡视角，注意他的投技。</p>
+                <span class="tag">第二章</span>
+                <span class="tag">高频卡关</span>
+            </div>
+
+            <div class="card">
+                <h3>黄风大圣</h3>
+                <span class="difficulty medium">难度：★★☆</span>
+                <p>第二章·最终BOSS。范围攻击多，建议近身绕后打。使用定风珠可大幅降低难度。</p>
+                <span class="tag">第二章</span>
+                <span class="tag">有逃课打法</span>
+            </div>
+
+            <div class="card">
+                <h3>亢金龙</h3>
+                <span class="difficulty medium">难度：★★☆</span>
+                <p>第三章·小西天。飞行BOSS，等落地后输出。注意落雷预警。</p>
+                <span class="tag">第三章</span>
+            </div>
+
+            <div class="card">
+                <h3>百目魔君</h3>
+                <span class="difficulty hard">难度：★★★★</span>
+                <p>第四章·盘丝岭。攻击范围大，有中毒机制。推荐先做支线拿解药。</p>
+                <span class="tag">第四章</span>
+                <span class="tag">高频卡关</span>
+            </div>
+        </div>
+
+        <!-- 隐藏内容 -->
+        <h2 class="section-title" id="hidden">🗝️ 隐藏内容</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>隐藏BOSS：赤髯龙</h3>
+                <p>第一章隐藏，需敲钟三次解锁。位置：苍狼林→观音禅院。</p>
+                <span class="tag">隐藏BOSS</span>
+            </div>
+
+            <div class="card">
+                <h3>隐藏关卡：紫云山</h3>
+                <p>第四章隐藏地图，需完成金蛇支线。内有隐藏BOSS毒敌大王。</p>
+                <span class="tag">隐藏地图</span>
+            </div>
+
+            <div class="card">
+                <h3>隐藏结局条件</h3>
+                <p>需集齐六根器+完成所有隐藏支线，才能触发真结局。</p>
+                <span class="tag">多结局</span>
+                <span class="tag">剧透注意</span>
+            </div>
+        </div>
+
+        <!-- 全收集 -->
+        <h2 class="section-title" id="collect">📦 全收集指南</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>酒食收集（全10种）</h3>
+                <p>不同酒食提供不同增益效果，部分需要特定条件才能获得。</p>
+                <span class="tag">收集品</span>
+            </div>
+
+            <div class="card">
+                <h3>精魄收集（全54个）</h3>
+                <p>击败特定敌人概率掉落，可装备提供特殊技能。</p>
+                <span class="tag">收集品</span>
+            </div>
+
+            <div class="card">
+                <h3>珍玩收集（全36个）</h3>
+                <p>饰品类装备，部分隐藏在极其隐蔽的位置。</p>
+                <span class="tag">收集品</span>
+            </div>
+        </div>
+
+        <!-- 新手入门 -->
+        <h2 class="section-title" id="guide">📖 新手入门</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>基础操作与战斗系统</h3>
+                <p>轻击、重击、棍势、闪避、格挡、法术。了解精力管理和棍势积累机制。</p>
+                <span class="tag">入门必读</span>
+            </div>
+
+            <div class="card">
+                <h3>前期加点推荐</h3>
+                <p>优先点满生命和精力，其次是棍法。法术优先学定身术。</p>
+                <span class="tag">流派推荐</span>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>天命人攻略站 · 持续更新中 | 本站为非官方玩家自建攻略站</p>
+        <p>黑神话：悟空 © 游戏科学 GameScience</p>
+    </footer>
+
+    <script>
+        // 简单的搜索交互（MVP阶段仅做前端过滤提示）
+        document.getElementById('searchInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const keyword = this.value.trim();
+                if (keyword) {
+                    alert('🔍 搜索功能即将上线！\n\n您搜索的是：' + keyword + '\n\nMVP阶段请点击下方卡片查看攻略。');
+                }
+            }
+        });
+
+        // 卡片点击提示
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('h3').textContent;
+                alert('📄 攻略详情页开发中...\n\n当前卡片：' + title + '\n\n下一迭代将完善内容页。');
+            });
+        });
+    </script>
+
+</body>
+</html>
